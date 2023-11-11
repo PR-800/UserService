@@ -10,7 +10,12 @@
 ----------------------- PATH ------------------------
 - getUser | get -> http://localhost:8082/user-service/
 - addUser | post -> http://localhost:8082/user-service/users
-- {
+- updateUser | put -> http://localhost:8082/user-service/users
+- deleteUser | delete -> http://localhost:8082/user-service/users/{id}
+
+
+addUser JSON body
+   {
        "email": "User1@gmail.com",
        "username": "User",
        "password": "1234",
@@ -18,8 +23,9 @@
        "createdDate": "2023-11-10T15:33:42.583+00:00",
        "birthDate": "2023-11-10T15:33:42.583+00:00"
    }
-- updateUser | put -> http://localhost:8082/user-service/users
- - {
+
+updateUser JSON body
+   {
        "userId": "{id}",
        "email": "User@gmail.com",
        "username": "User edited",
@@ -28,5 +34,3 @@
        "createdDate": "2023-11-10T15:33:42.583+00:00",
        "birthDate": "2023-11-10T15:33:42.583+00:00"
    }
-- deleteUser | delete -> http://localhost:8082/user-service/users/{id}
-

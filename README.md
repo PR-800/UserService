@@ -14,7 +14,7 @@
 - deleteUser | delete -> http://localhost:8082/user-service/users/{id}
 
 
-addUser JSON body
+----------------- addUser JSON body -----------------
    {
        "email": "User1@gmail.com",
        "username": "User",
@@ -24,7 +24,7 @@ addUser JSON body
        "birthDate": "2023-11-10T15:33:42.583+00:00"
    }
 
-updateUser JSON body
+--------------- updateUser JSON body ----------------
    {
        "userId": "{id}",
        "email": "User@gmail.com",

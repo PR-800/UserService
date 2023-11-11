@@ -29,7 +29,6 @@ public class UserAggregate {
 
     @CommandHandler
     public UserAggregate(CreateUserCommand createUserCommand) {
-        System.out.println("ADD USER");
 
         if (createUserCommand.getEmail() == null || createUserCommand.getEmail().isBlank()) {
             throw new IllegalArgumentException("Email cannot be empty");
@@ -66,7 +65,6 @@ public class UserAggregate {
 
     @CommandHandler
     public UserAggregate(UpdateUserCommand updateUserCommand) {
-        System.out.println("UPDATE USER");
 
         if (updateUserCommand.getEmail() == null || updateUserCommand.getEmail().isBlank()) {
             throw new IllegalArgumentException("Email cannot be empty");
@@ -103,7 +101,6 @@ public class UserAggregate {
 
     @CommandHandler
     public UserAggregate(DeleteUserCommand deleteUserCommand) {
-        System.out.println("DELETE USER");
         UserDeletedEvent userDeletedEvent = new UserDeletedEvent();
         BeanUtils.copyProperties(deleteUserCommand, userDeletedEvent);
         AggregateLifecycle.apply(userDeletedEvent);

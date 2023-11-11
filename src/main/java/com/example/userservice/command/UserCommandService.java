@@ -1,5 +1,6 @@
 package com.example.userservice.command;
 
+import at.favre.lib.crypto.bcrypt.BCrypt;
 import com.example.userservice.command.rest.UserRestModel;
 import com.example.userservice.core.data.UserEntity;
 import com.example.userservice.core.data.UserRepository;
@@ -27,11 +28,14 @@ public class UserCommandService {
     @RabbitListener(queues = "AddUserQueue")
     public void addUser(UserRestModel model) {
 
+        String password = model.getPassword();
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+
         CreateUserCommand creatCommand = CreateUserCommand.builder()
                 .userId(UUID.randomUUID().toString())
                 .email(model.getEmail())
                 .username(model.getUsername())
-                .password(model.getPassword())
+                .password(bcryptHashString)
                 .role(model.getRole())
                 .createdDate(model.getCreatedDate())
                 .birthDate(model.getBirthDate())
@@ -49,11 +53,14 @@ public class UserCommandService {
     @RabbitListener(queues = "UpdateUserQueue")
     public void updateUser(UserRestModel model) {
 
+        String password = model.getPassword();
+        String bcryptHashString = BCrypt.withDefaults().hashToString(12, password.toCharArray());
+
         UpdateUserCommand updateCommand = UpdateUserCommand.builder()
                 .userId(model.getUserId())
                 .email(model.getEmail())
                 .username(model.getUsername())
-                .password(model.getPassword())
+                .password(bcryptHashString)
                 .role(model.getRole())
                 .createdDate(model.getCreatedDate())
                 .birthDate(model.getBirthDate())

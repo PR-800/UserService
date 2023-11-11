@@ -38,7 +38,6 @@ public class UserEventsHandler {
         System.out.println("Delete from db successfully");
         UserEntity userEntity = new UserEntity();
         BeanUtils.copyProperties(event, userEntity);
-//        userRepository.deleteAll();
         userRepository.deleteById(userEntity.getUserId());
     }
 

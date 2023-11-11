@@ -15,7 +15,7 @@
 
 
 ----------------- addUser JSON body -----------------
-   {
+-   {
        "email": "User1@gmail.com",
        "username": "User",
        "password": "1234",
@@ -25,7 +25,7 @@
    }
 
 --------------- updateUser JSON body ----------------
-   {
+-   {
        "userId": "{id}",
        "email": "User@gmail.com",
        "username": "User edited",

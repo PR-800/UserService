@@ -2,6 +2,7 @@ package com.example.userservice.query;
 
 import com.example.userservice.core.data.UserEntity;
 import com.example.userservice.core.data.UserRepository;
+import com.example.userservice.query.rest.FindUserByIdQuery;
 import com.example.userservice.query.rest.FindUserQuery;
 import com.example.userservice.query.rest.UserRestModel;
 import org.axonframework.queryhandling.QueryHandler;
@@ -28,5 +29,18 @@ public class UserQueryHandler {
             userRest.add(userRestModel);
         }
         return userRest;
+    }
+
+    @QueryHandler
+    public UserRestModel findUserById(FindUserByIdQuery query) {
+        UserEntity userEntity = userRepository.findUserByUserId(query.getUserId());
+        if (userEntity != null) {
+            UserRestModel userRestModel = new UserRestModel();
+            BeanUtils.copyProperties(userEntity, userRestModel);
+            return userRestModel;
+        }
+        else {
+            return null;
+        }
     }
 }

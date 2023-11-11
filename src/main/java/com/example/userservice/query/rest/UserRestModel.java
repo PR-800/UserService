@@ -7,6 +7,7 @@ import java.util.List;
 
 @Data
 public class UserRestModel {
+    private String userId;
     private String email;
     private String username;
     private String password;

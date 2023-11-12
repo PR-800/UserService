@@ -5,10 +5,13 @@
 - AddUserQueue | ROUTING KEY: addUser
 - UpdateUserQueue | ROUTING KEY: updateUser
 - DeleteUserQueue | ROUTING KEY: deleteUser
+- GetUsersQueue | ROUTING KEY: getUsers
+- FindUserQueue | ROUTING KEY: findUser
 
 
 ----------------------- PATH ------------------------
-- getUser | get -> http://localhost:8082/user-service/
+- getUser | get -> http://localhost:8082/user-service/getUsers
+- findUser(ById) | get -> http://localhost:8082/user-service/getUsers/{id}
 - addUser | post -> http://localhost:8082/user-service/users
 - updateUser | put -> http://localhost:8082/user-service/users
 - deleteUser | delete -> http://localhost:8082/user-service/users/{id}
